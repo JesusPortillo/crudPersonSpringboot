@@ -1,4 +1,4 @@
-package com.sofkau.crudPerson.repository;
+package com.sofkau.crudPerson.repositories;
 
 import com.sofkau.crudPerson.entities.Person;
 import org.springframework.data.repository.CrudRepository;
