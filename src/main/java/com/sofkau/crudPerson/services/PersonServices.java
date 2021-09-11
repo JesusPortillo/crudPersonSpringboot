@@ -3,9 +3,12 @@ package com.sofkau.crudPerson.services;
 import com.sofkau.crudPerson.entities.Person;
 import com.sofkau.crudPerson.repositories.PersonInterfaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
+@Service
 public class PersonServices implements PersonServicesInterface{
 
     @Autowired
@@ -18,7 +21,7 @@ public class PersonServices implements PersonServicesInterface{
 
     @Override
     public Person listPersonById(int id) {
-        return null;
+        return data.findById(id).get();
     }
 
     @Override

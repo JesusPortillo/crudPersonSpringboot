@@ -5,6 +5,8 @@ import com.sofkau.crudPerson.services.PersonServicesInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("api")
 public class PersonController {
@@ -22,7 +24,10 @@ public class PersonController {
         return service.savePerson(person);
     }
 
-
+    @GetMapping("listPersonById/{id}")
+    public Person listPersonById(@PathVariable("id") int id){
+        return service.listPersonById(id);
+    }
 
 
 }
