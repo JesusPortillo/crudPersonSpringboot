@@ -21,7 +21,7 @@ public class PersonServices implements PersonServicesInterface{
 
     @Override
     public Optional<Person> listPersonById(int id) {
-            return data.findById(id);
+        return data.findById(id);
     }
 
     @Override
@@ -36,6 +36,6 @@ public class PersonServices implements PersonServicesInterface{
 
     @Override
     public Person updatePerson(Person person) {
-        return null;
+        return data.save(person);
     }
 }

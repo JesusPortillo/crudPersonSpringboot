@@ -34,4 +34,9 @@ public class PersonController {
         service.deletePerson(id);
     }
 
+    @PutMapping("updatePerson")
+    public Person updatePerson(@RequestBody Person person){
+        return service.updatePerson(person);
+    }
+
 }
