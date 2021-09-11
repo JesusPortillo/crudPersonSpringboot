@@ -20,8 +20,8 @@ public class PersonServices implements PersonServicesInterface{
     }
 
     @Override
-    public Person listPersonById(int id) {
-        return data.findById(id).get();
+    public Optional<Person> listPersonById(int id) {
+            return data.findById(id);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PersonServices implements PersonServicesInterface{
 
     @Override
     public void deletePerson(int id) {
-
+        data.deleteById(id);
     }
 
     @Override

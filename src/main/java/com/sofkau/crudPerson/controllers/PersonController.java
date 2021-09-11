@@ -25,9 +25,13 @@ public class PersonController {
     }
 
     @GetMapping("listPersonById/{id}")
-    public Person listPersonById(@PathVariable("id") int id){
+    public Optional<Person> listPersonById(@PathVariable("id") int id){
         return service.listPersonById(id);
     }
 
+    @DeleteMapping("deletePerson/{id}")
+    public void deletePerson(@PathVariable("id") int id){
+        service.deletePerson(id);
+    }
 
 }
