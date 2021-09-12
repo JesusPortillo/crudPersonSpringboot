@@ -1,5 +1,6 @@
 package com.sofkau.crudPerson.services;
 
+import com.sofkau.crudPerson.config.exceptions.BadRequestException;
 import com.sofkau.crudPerson.entities.Person;
 import com.sofkau.crudPerson.repositories.PersonInterfaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,12 @@ public class PersonServices implements PersonServicesInterface{
 
     @Override
     public Person savePerson(Person person) {
+        if (person.getName() == null || person.getName().isEmpty()){
+            throw new BadRequestException("Invalid name");
+        }
+        if (person.getAge() == null || person.getAge().isEmpty()){
+            throw new BadRequestException("Invalid age");
+        }
         return data.save(person);
     }
 
