@@ -2,14 +2,12 @@ package com.sofkau.crudPerson.config;
 
 import com.sofkau.crudPerson.config.exceptions.BadRequestException;
 import com.sofkau.crudPerson.config.exceptions.NotFoundException;
-import org.aspectj.apache.bcel.classfile.Unknown;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.rmi.activation.UnknownGroupException;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -19,7 +17,7 @@ public class ExceptionConfig {
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<?> notFoundException(Exception e){
          ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-         return buildResponseEntity(HttpStatus.NOT_FOUND, e);
+         return giveResponse(HttpStatus.NOT_FOUND, e);
     }
 
 
@@ -27,12 +25,12 @@ public class ExceptionConfig {
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<?> badRequestException(Exception e){
          ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-         return buildResponseEntity(HttpStatus.BAD_REQUEST, e);
+         return giveResponse(HttpStatus.BAD_REQUEST, e);
     }
 
 
 
-    private ResponseEntity<HashMap> buildResponseEntity(HttpStatus httpStatus, Exception exc) {
+    private ResponseEntity<HashMap> giveResponse(HttpStatus httpStatus, Exception exc) {
         HashMap<String, String> res = new HashMap<>();
         res.put("Error - ", exc.getMessage());
         res.put("Status - ", String.valueOf(httpStatus.value()));
